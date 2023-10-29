@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Timestamp API
+  description: API for timestamp conversion
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+  - url: http://localhost:8000
+
+paths:
+  /api/{date}:
+    get:
+      summary: Convert a timestamp to UTC
+      parameters:
+        - in: path
+          name: date
+          schema:
+            type: string
+          required: false
+          description: Date or timestamp to convert to UTC
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  unix:
+                    type: integer
+                    description: Unix timestamp
+                  utc:
+                    type: string
+                    description: UTC time in string format
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                          description: Status of the error, e.g., "fail"
+                        error:
+                          type: string
+                          description: A description of the error, e.g., "Invalid Date"
+      tags:
+        - Timestamp
