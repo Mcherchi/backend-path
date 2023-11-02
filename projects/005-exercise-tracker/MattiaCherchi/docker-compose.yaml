@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  exercise-tracker-app:
+    container_name: exercise-tracker
+    build: .
+    image: mattiacherchi/exercise-tracker
+    ports:
+      - '3000:3000'
+    environment:
+      MONGODB_HOST: exercise-tracker-mongo
+      MONGODB_PORT: 27017
+      MONGODB_DATABASE: tracker
+      PORT: 3000
+    depends_on:
+      - exercise-tracker-mongo
+    restart: always
+  exercise-tracker-mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
