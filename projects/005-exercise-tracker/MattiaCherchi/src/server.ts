@@ -1,16 +1,16 @@
 import mongoose from 'mongoose';
-import app from './app.js';
+import { app } from './app';
 
 const start = async () => {
-  try {
-    if (
-      !process.env.MONGODB_HOST ||
-      !process.env.MONGODB_PORT ||
-      !process.env.MONGODB_DATABASE
-    ) {
-      throw new Error('Missing MongoDB environment variables.');
-    }
+  if (
+    !process.env.MONGODB_HOST ||
+    !process.env.MONGODB_PORT ||
+    !process.env.MONGODB_DATABASE
+  ) {
+    throw new Error('Missing MongoDB environment variables.');
+  }
 
+  try {
     const MONGODB_URI = `mongodb://${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DATABASE}`;
 
     await mongoose.connect(MONGODB_URI);
