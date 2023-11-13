@@ -46,4 +46,4 @@ const Exercise = mongoose.model<ExerciseDoc, ExerciseModel>(
   exerciseSchema
 );
 
-export default Exercise;
+export { Exercise };
