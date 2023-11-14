@@ -1,8 +1,8 @@
 import express from 'express';
 import 'express-async-errors';
-import { errorHandler } from './middlewares/error-handler';
+import { errorHandler } from './middlewares/errorHandler';
 import { trackerRouter } from './routes/trackerRoutes';
-import { NotFoundError } from './errors/not-found-error';
+import { NotFoundError } from './errors/notFoundError';
 
 const app = express();
 

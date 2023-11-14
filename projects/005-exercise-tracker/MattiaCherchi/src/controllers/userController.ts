@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { BadRequestError } from '../errors/bad-request-error';
+import { BadRequestError } from '../errors/badRequestError';
 import { User } from '../models/User';
 import mongoose from 'mongoose';
-import { NotFoundError } from '../errors/not-found-error';
+import { NotFoundError } from '../errors/notFoundError';
 import { Exercise } from '../models/Exercise';
 
 export const createUser = async (req: Request, res: Response) => {

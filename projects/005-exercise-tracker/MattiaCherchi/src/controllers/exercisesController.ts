@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { BadRequestError } from '../errors/bad-request-error';
+import { BadRequestError } from '../errors/badRequestError';
 import { User } from '../models/User';
 import { Exercise } from '../models/Exercise';
 import mongoose from 'mongoose';
-import { NotFoundError } from '../errors/not-found-error';
+import { NotFoundError } from '../errors/notFoundError';
 
 export const createExercise = async (req: Request, res: Response) => {
   const { description, duration, date } = req.body;

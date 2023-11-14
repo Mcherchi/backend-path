@@ -5,7 +5,7 @@ import {
   getAllUsers,
   getUserWithExercises,
 } from '../controllers/userController';
-import { validateRequest } from '../middlewares/validate-request';
+import { validateRequest } from '../middlewares/validateRequest';
 import { createExercise } from '../controllers/exercisesController';
 
 const router = express.Router();
