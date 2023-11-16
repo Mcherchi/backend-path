@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  url-shortner-microservice:
+    container_name: url-shortner
+    build: .
+    image: mattiacherchi/url-shortner
+    ports:
+      - '3000:3000'
+    environment:
+      MONGODB_HOST: url-shortner-mongo
+      MONGODB_PORT: 27017
+      MONGODB_DATABASE: url-shortner
+      PORT: 3000
+    depends_on:
+      - url-shortner-mongo
+    restart: always
+    volumes:
+      - ./src:/app/src
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+  url-shortner-mongo:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
