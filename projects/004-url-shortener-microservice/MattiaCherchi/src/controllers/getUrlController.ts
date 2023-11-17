@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { Url } from '../models/Url';
-import { BadRequestError } from '../errors/badRequestError';
 import { NotFoundError } from '../errors/notFoundError';
 
 export const getOriginalUrl = async (req: Request, res: Response) => {

@@ -16,7 +16,7 @@ export const generateShortUrl = async (req: Request, res: Response) => {
 
     res.json({ original_url: url.original_url, short_url: url.short_url });
   } catch (errors) {
-    console.error(errors);
+    console.log(errors);
     throw new Error();
   }
 };

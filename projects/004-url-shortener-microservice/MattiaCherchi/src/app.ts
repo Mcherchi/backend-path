@@ -2,16 +2,17 @@ import express from 'express';
 import 'express-async-errors';
 import { errorHandler } from './middlewares/errorHandler';
 import { urlRouter } from './routes/urlRoutes';
+import { NotFoundError } from './errors/notFoundError';
 
 const app = express();
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.json({ message: 'hello' });
-});
-
 app.use('/api', urlRouter);
+
+app.get('*', (req, res) => {
+  throw new NotFoundError();
+});
 
 app.use(errorHandler);
 export { app };

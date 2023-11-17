@@ -27,7 +27,7 @@ export const validateUrl = async (
   const existingUrl = await Url.findOne({ original_url });
 
   if (existingUrl) {
-    throw new BadRequestError(`${original_url}: Already exists `);
+    throw new BadRequestError(`${original_url}: Already exists`);
   }
 
   next();
