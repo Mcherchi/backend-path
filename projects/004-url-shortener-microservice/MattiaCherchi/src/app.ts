@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use('/api', urlRouter);
 
-app.get('*', (req, res) => {
+app.all('*', (req, res) => {
   throw new NotFoundError();
 });
 
