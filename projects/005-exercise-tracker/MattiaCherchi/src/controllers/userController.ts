@@ -3,7 +3,7 @@ import { BadRequestError } from '../errors/badRequestError';
 import { User } from '../models/User';
 import mongoose from 'mongoose';
 import { NotFoundError } from '../errors/notFoundError';
-import { Exercise } from '../models/Exercise';
+import { Attrs, Exercise } from '../models/Exercise';
 
 export const createUser = async (req: Request, res: Response) => {
   const { username } = req.body;
@@ -77,9 +77,9 @@ export const getUserWithExercises = async (req: Request, res: Response) => {
   try {
     const aggregateLogs = await Exercise.aggregate(aggregationPipeline);
 
-    const logs = aggregateLogs.map((log) => ({
+    const logs = aggregateLogs.map((log: Attrs) => ({
       ...log,
-      date: log.date.toDateString(),
+      date: log?.date?.toDateString() || null,
     }));
 
     res.status(200).json({

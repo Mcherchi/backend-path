@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-interface Attrs {
+export interface Attrs {
   username: string;
   description: string;
   duration: number;
